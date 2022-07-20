@@ -3,9 +3,19 @@
 $fira: "Fira Sans", sans-serif;
 
 $white: #fff;
+$grey: #bdbdbd;
 $black: #00240f;
 $red: #ec0000;
 $green: #05a84b;
+
+@mixin axisAlignment($justifyContent: null, $alignItems: null) {
+    @if $justifyContent {
+        justify-content: $justifyContent;
+    }
+    @if $alignItems {
+        align-items: $alignItems;
+    }
+}
 
 html body {
     min-height: 100vh;
@@ -16,12 +26,14 @@ html body {
 header {
 
     nav {
-        justify-content: space-between;
+        @include axisAlignment(space-between);
+
         padding: 1rem 3.5rem 1rem 2rem;
 
         ul {
+            @include axisAlignment(null, center);
+
             flex-wrap: wrap;
-            align-items: center;
             gap: 1.85rem;
 
             a img {
@@ -41,8 +53,58 @@ header {
     }
 }
 
-.align-start {
-    align-items: start;
+#banner-section {
+    @include axisAlignment(end);
+
+    margin-bottom: 4rem;
+
+    > div {
+        &:first-child {
+            @include axisAlignment(center, center);
+            width: 50%;
+            margin-bottom: 3rem;
+
+            > div {
+                @include axisAlignment(null, start);
+            }
+        }
+
+        &:last-child {
+            width: auto;
+            background: linear-gradient(
+                to left,
+                rgba(255, 255, 255, 0.0) 50%,
+                rgba(255, 255, 255, 0.9) 80%,
+                rgba(255, 255, 255, 1.0)
+            );
+
+            img {
+                position: relative;
+                z-index: -1;
+            }
+        }
+    }
+}
+
+#menu {
+
+    > h3 {
+        text-align: center;
+    }
+
+    > div {
+        padding: 0 5rem;
+    }
+
+    article {
+        border: 1px solid $grey;
+        border-radius: 180px 180px 30px 30px;
+
+        figure {
+            border-radius: 50%;
+            overflow: hidden;
+        }
+    }
 }
 
 $spacer: 1rem;
@@ -74,7 +136,7 @@ $multipliers: (
     &-lg {
         @extend .button;
 
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         padding: {
             left: .8rem;
             right: .8rem;

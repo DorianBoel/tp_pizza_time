@@ -10,8 +10,8 @@ header nav {
   padding: 1rem 3.5rem 1rem 2rem;
 }
 header nav ul {
-  flex-wrap: wrap;
   align-items: center;
+  flex-wrap: wrap;
   gap: 1.85rem;
 }
 header nav ul a img {
@@ -25,8 +25,41 @@ header nav ul a img {
   flex-direction: column;
 }
 
-.align-start {
+#banner-section {
+  justify-content: end;
+  margin-bottom: 4rem;
+}
+#banner-section > div:first-child {
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin-bottom: 3rem;
+}
+#banner-section > div:first-child > div {
   align-items: start;
+}
+#banner-section > div:last-child {
+  width: auto;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.9) 80%, rgb(255, 255, 255));
+}
+#banner-section > div:last-child img {
+  position: relative;
+  z-index: -1;
+}
+
+#menu > h3 {
+  text-align: center;
+}
+#menu > div {
+  padding: 0 5rem;
+}
+#menu article {
+  border: 1px solid #bdbdbd;
+  border-radius: 180px 180px 30px 30px;
+}
+#menu article figure {
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .gap-0 {
@@ -70,7 +103,7 @@ header nav ul a img {
   border-radius: 25px;
 }
 .button-lg {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   padding-left: 0.8rem;
   padding-right: 0.8rem;
 }

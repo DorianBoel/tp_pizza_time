@@ -20,6 +20,7 @@ $green: #05a84b;
 html body {
     min-height: 100vh;
     width: 100vw;
+    padding-bottom: 4rem;
     font-family: $fira;
 }
 
@@ -53,12 +54,13 @@ header {
     }
 }
 
-#banner-section {
+#banner {
     @include axisAlignment(end);
 
     margin-bottom: 4rem;
 
     > div {
+
         &:first-child {
             @include axisAlignment(center, center);
             width: 50%;
@@ -90,19 +92,64 @@ header {
 
     > h3 {
         text-align: center;
+        margin-bottom: 3rem;
     }
 
     > div {
+        @include axisAlignment(center);
+
         padding: 0 5rem;
     }
 
     article {
+        @include axisAlignment(null, center);
+
+        max-width: 22%;
+        padding: 1.5rem 1rem;
         border: 1px solid $grey;
         border-radius: 180px 180px 30px 30px;
 
-        figure {
+        figure img {
             border-radius: 50%;
-            overflow: hidden;
+        }
+
+        > div {
+
+            &:first-of-type {
+                @include axisAlignment(null, center);
+
+                text-align: center;
+
+                p {
+                    font-weight: 300;
+                    line-height: 1.2rem;
+                }
+
+                + h4 {
+                    font-size: 1.3rem;
+                    color: $green;
+                }
+            }
+
+            &:last-of-type {
+                align-self: stretch;
+                
+                select {
+                    background-color: $white;
+                    border: 1px solid $black;
+                    border-radius: 25px;
+                    padding: .8rem;
+                    font-family: $fira;
+                    font-size: 1.1rem;
+                    appearance: none;
+                    background: url("../img/icon-caret-down.svg") no-repeat calc(100% - 10px);
+                }
+
+                a.button {
+                    padding: .8rem;
+                }
+            }
+
         }
     }
 }
@@ -128,6 +175,7 @@ $multipliers: (
 .button {
     background-color: $red;
     text-transform: uppercase;
+    text-align: center;
     color: $white;
     font-weight: 500;
     padding: .625rem 1.5rem;
@@ -150,7 +198,11 @@ $title-rules: (
         font-weight: 600
     ),
     3: (
-        font-size: 1.5rem,
+        font-size: 1.8rem,
+        font-weight: 500
+    ),
+    4: (
+        font-size: 1.3rem,
         font-weight: 500
     )
 );

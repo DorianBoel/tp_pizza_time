@@ -2,6 +2,7 @@
 html body {
   min-height: 100vh;
   width: 100vw;
+  padding-bottom: 4rem;
   font-family: "Fira Sans", sans-serif;
 }
 
@@ -25,41 +26,73 @@ header nav ul a img {
   flex-direction: column;
 }
 
-#banner-section {
+#banner {
   justify-content: end;
   margin-bottom: 4rem;
 }
-#banner-section > div:first-child {
+#banner > div:first-child {
   justify-content: center;
   align-items: center;
   width: 50%;
   margin-bottom: 3rem;
 }
-#banner-section > div:first-child > div {
+#banner > div:first-child > div {
   align-items: start;
 }
-#banner-section > div:last-child {
+#banner > div:last-child {
   width: auto;
   background: linear-gradient(to left, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.9) 80%, rgb(255, 255, 255));
 }
-#banner-section > div:last-child img {
+#banner > div:last-child img {
   position: relative;
   z-index: -1;
 }
 
 #menu > h3 {
   text-align: center;
+  margin-bottom: 3rem;
 }
 #menu > div {
+  justify-content: center;
   padding: 0 5rem;
 }
 #menu article {
+  align-items: center;
+  max-width: 22%;
+  padding: 1.5rem 1rem;
   border: 1px solid #bdbdbd;
   border-radius: 180px 180px 30px 30px;
 }
-#menu article figure {
+#menu article figure img {
   border-radius: 50%;
-  overflow: hidden;
+}
+#menu article > div:first-of-type {
+  align-items: center;
+  text-align: center;
+}
+#menu article > div:first-of-type p {
+  font-weight: 300;
+  line-height: 1.2rem;
+}
+#menu article > div:first-of-type + h4 {
+  font-size: 1.3rem;
+  color: #05a84b;
+}
+#menu article > div:last-of-type {
+  align-self: stretch;
+}
+#menu article > div:last-of-type select {
+  background-color: #fff;
+  border: 1px solid #00240f;
+  border-radius: 25px;
+  padding: 0.8rem;
+  font-family: "Fira Sans", sans-serif;
+  font-size: 1.1rem;
+  appearance: none;
+  background: url("../img/icon-caret-down.svg") no-repeat calc(100% - 10px);
+}
+#menu article > div:last-of-type a.button, #menu article > div:last-of-type a.button-lg {
+  padding: 0.8rem;
 }
 
 .gap-0 {
@@ -97,6 +130,7 @@ header nav ul a img {
 .button, .button-lg {
   background-color: #ec0000;
   text-transform: uppercase;
+  text-align: center;
   color: #fff;
   font-weight: 500;
   padding: 0.625rem 1.5rem;
@@ -114,6 +148,11 @@ h2 {
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+h4 {
+  font-size: 1.3rem;
   font-weight: 500;
 }/*# sourceMappingURL=main.css.map */

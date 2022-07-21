@@ -2,11 +2,25 @@
 
 $fira: "Fira Sans", sans-serif;
 
+@mixin from($breakpoint) {
+    @media screen and (min-width: $breakpoint) {
+        @content;
+    }
+}
+
+@mixin until($breakpoint) {
+    @media screen and (max-width: Calc($breakpoint - 1px)) {
+        @content;
+    }
+}
+
 $white: #fff;
 $grey: #bdbdbd;
 $black: #00240f;
 $red: #ec0000;
 $green: #05a84b;
+
+$breakpoint1: 510px;
 
 @mixin axisAlignment($justifyContent: null, $alignItems: null) {
     @if $justifyContent {
@@ -28,17 +42,43 @@ header {
 
     nav {
         @include axisAlignment(space-between);
+        @include until($breakpoint1) {
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1rem 2rem;
+        }
 
         padding: 1rem 3.5rem 1rem 2rem;
 
-        ul {
-            @include axisAlignment(null, center);
+        > a {
+            align-self: center;
+        }
 
+        > div {
+            @include axisAlignment(center);
+            @include until($breakpoint1) {
+                margin-left: 1rem;
+                transform: scale(1.1);
+
+                &.gap-6 {
+                    row-gap: 1rem;
+                }
+            }
+
+            margin-left: 3rem;
             flex-wrap: wrap;
-            gap: 1.85rem;
 
-            a img {
-                vertical-align: bottom;
+            ul {
+                @include axisAlignment(null, center);
+                @include until($breakpoint1) {
+                    flex-wrap: nowrap;
+                }
+
+                flex-wrap: wrap;
+
+                a img {
+                    vertical-align: bottom;
+                }
             }
         }
     }
@@ -73,6 +113,7 @@ header {
 
         &:last-child {
             width: auto;
+            user-select: none;
             background: linear-gradient(
                 to left,
                 rgba(255, 255, 255, 0.0) 50%,
@@ -113,6 +154,10 @@ header {
             border-radius: 50%;
         }
 
+        &:hover {
+            box-shadow: 0 0 2rem #bdbdbd;
+        }
+
         > div {
 
             &:first-of-type {
@@ -128,6 +173,7 @@ header {
                 + h4 {
                     font-size: 1.3rem;
                     color: $green;
+                    margin-top: auto;
                 }
             }
 
@@ -142,6 +188,7 @@ header {
                     font-family: $fira;
                     font-size: 1.1rem;
                     appearance: none;
+                    cursor: pointer;
                     background: url("../img/icon-caret-down.svg") no-repeat calc(100% - 10px);
                 }
 
@@ -173,6 +220,7 @@ $multipliers: (
 }
 
 .button {
+    display: block;
     background-color: $red;
     text-transform: uppercase;
     text-align: center;
@@ -180,6 +228,7 @@ $multipliers: (
     font-weight: 500;
     padding: .625rem 1.5rem;
     border-radius: 25px;
+    white-space: nowrap;
 
     &-lg {
         @extend .button;

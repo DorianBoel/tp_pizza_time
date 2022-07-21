@@ -10,12 +10,40 @@ header nav {
   justify-content: space-between;
   padding: 1rem 3.5rem 1rem 2rem;
 }
-header nav ul {
+@media screen and (max-width: 509px) {
+  header nav {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 2rem;
+  }
+}
+header nav > a {
+  align-self: center;
+}
+header nav > div {
+  justify-content: center;
+  margin-left: 3rem;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 509px) {
+  header nav > div {
+    margin-left: 1rem;
+    transform: scale(1.1);
+  }
+  header nav > div.gap-6 {
+    row-gap: 1rem;
+  }
+}
+header nav > div ul {
   align-items: center;
   flex-wrap: wrap;
-  gap: 1.85rem;
 }
-header nav ul a img {
+@media screen and (max-width: 509px) {
+  header nav > div ul {
+    flex-wrap: nowrap;
+  }
+}
+header nav > div ul a img {
   vertical-align: bottom;
 }
 
@@ -41,6 +69,7 @@ header nav ul a img {
 }
 #banner > div:last-child {
   width: auto;
+  user-select: none;
   background: linear-gradient(to left, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.9) 80%, rgb(255, 255, 255));
 }
 #banner > div:last-child img {
@@ -66,6 +95,9 @@ header nav ul a img {
 #menu article figure img {
   border-radius: 50%;
 }
+#menu article:hover {
+  box-shadow: 0 0 2rem #bdbdbd;
+}
 #menu article > div:first-of-type {
   align-items: center;
   text-align: center;
@@ -77,6 +109,7 @@ header nav ul a img {
 #menu article > div:first-of-type + h4 {
   font-size: 1.3rem;
   color: #05a84b;
+  margin-top: auto;
 }
 #menu article > div:last-of-type {
   align-self: stretch;
@@ -89,6 +122,7 @@ header nav ul a img {
   font-family: "Fira Sans", sans-serif;
   font-size: 1.1rem;
   appearance: none;
+  cursor: pointer;
   background: url("../img/icon-caret-down.svg") no-repeat calc(100% - 10px);
 }
 #menu article > div:last-of-type a.button, #menu article > div:last-of-type a.button-lg {
@@ -128,6 +162,7 @@ header nav ul a img {
 }
 
 .button, .button-lg {
+  display: block;
   background-color: #ec0000;
   text-transform: uppercase;
   text-align: center;
@@ -135,6 +170,7 @@ header nav ul a img {
   font-weight: 500;
   padding: 0.625rem 1.5rem;
   border-radius: 25px;
+  white-space: nowrap;
 }
 .button-lg {
   font-size: 1.3rem;

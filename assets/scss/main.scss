@@ -14,6 +14,21 @@ $fira: "Fira Sans", sans-serif;
     }
 }
 
+@function bannerGradient($isMobile: false) {
+    $transparency: 50%;
+    @if $isMobile {
+        $transparency: -$transparency;
+    }
+    @return linear-gradient(
+        to left,
+        transparent $transparency,
+        rgba(255, 255, 255, 0.9) 80%
+    );
+
+}
+
+$clamp: Clamp(-1540px, -175vw, -1000px);
+
 $white: #fff;
 $grey: #bdbdbd;
 $black: #00240f;
@@ -21,6 +36,7 @@ $red: #ec0000;
 $green: #05a84b;
 
 $breakpoint1: 510px;
+$breakpoint2: 665px;
 
 @mixin axisAlignment($justifyContent: null, $alignItems: null) {
     @if $justifyContent {
@@ -35,7 +51,11 @@ html body {
     min-height: 100vh;
     width: 100vw;
     padding-bottom: 4rem;
-    font-family: $fira;
+    overflow-x: hidden;
+
+    &, select {
+        font-family: $fira;
+    }
 }
 
 header {
@@ -95,7 +115,10 @@ header {
 }
 
 #banner {
-    @include axisAlignment(end);
+    @include axisAlignment(start);
+    @include until($breakpoint1) {
+        @include axisAlignment(center)
+    }
 
     margin-bottom: 4rem;
 
@@ -103,8 +126,29 @@ header {
 
         &:first-child {
             @include axisAlignment(center, center);
+            @include until($breakpoint1) {
+                position: absolute;
+                padding-top: 25vh;
+                width: unset;
+                padding-left: 2rem;
+            }
+
+            @include from($breakpoint1) {
+                background-color: rgba(255, 255, 255, 0.9);
+
+                @include until($breakpoint2) {
+                    flex-shrink: 0;
+
+                    h2 {
+                        z-index: 1;
+                        white-space: nowrap;
+                    }
+                }
+            }
+
             width: 50%;
-            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            padding-left: Calc(25vh - 9%);
 
             > div {
                 @include axisAlignment(null, start);
@@ -114,16 +158,21 @@ header {
         &:last-child {
             width: auto;
             user-select: none;
-            background: linear-gradient(
-                to left,
-                rgba(255, 255, 255, 0.0) 50%,
-                rgba(255, 255, 255, 0.9) 80%,
-                rgba(255, 255, 255, 1.0)
-            );
+            background: bannerGradient();
+            
+            @include until($breakpoint1) {
+                background: bannerGradient(true);
+            }
 
             img {
                 position: relative;
                 z-index: -1;
+
+                @include from($breakpoint1) {
+                    @include until($breakpoint2) {
+                        right: 75%;
+                    }
+                }
             }
         }
     }
@@ -185,7 +234,6 @@ header {
                     border: 1px solid $black;
                     border-radius: 25px;
                     padding: .8rem;
-                    font-family: $fira;
                     font-size: 1.1rem;
                     appearance: none;
                     cursor: pointer;

@@ -3,6 +3,9 @@ html body {
   min-height: 100vh;
   width: 100vw;
   padding-bottom: 4rem;
+  overflow-x: hidden;
+}
+html body, html body select {
   font-family: "Fira Sans", sans-serif;
 }
 
@@ -55,14 +58,42 @@ header nav > div ul a img {
 }
 
 #banner {
-  justify-content: end;
+  justify-content: start;
   margin-bottom: 4rem;
+}
+@media screen and (max-width: 509px) {
+  #banner {
+    justify-content: center;
+  }
 }
 #banner > div:first-child {
   justify-content: center;
   align-items: center;
   width: 50%;
-  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  padding-left: calc(25vh - 9%);
+}
+@media screen and (max-width: 509px) {
+  #banner > div:first-child {
+    position: absolute;
+    padding-top: 25vh;
+    width: unset;
+    padding-left: 2rem;
+  }
+}
+@media screen and (min-width: 510px) {
+  #banner > div:first-child {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+}
+@media screen and (min-width: 510px) and (max-width: 664px) {
+  #banner > div:first-child {
+    flex-shrink: 0;
+  }
+  #banner > div:first-child h2 {
+    z-index: 1;
+    white-space: nowrap;
+  }
 }
 #banner > div:first-child > div {
   align-items: start;
@@ -70,11 +101,21 @@ header nav > div ul a img {
 #banner > div:last-child {
   width: auto;
   user-select: none;
-  background: linear-gradient(to left, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.9) 80%, rgb(255, 255, 255));
+  background: linear-gradient(to left, transparent 50%, rgba(255, 255, 255, 0.9) 80%);
+}
+@media screen and (max-width: 509px) {
+  #banner > div:last-child {
+    background: linear-gradient(to left, transparent -50%, rgba(255, 255, 255, 0.9) 80%);
+  }
 }
 #banner > div:last-child img {
   position: relative;
   z-index: -1;
+}
+@media screen and (min-width: 510px) and (max-width: 664px) {
+  #banner > div:last-child img {
+    right: 75%;
+  }
 }
 
 #menu > h3 {
@@ -119,7 +160,6 @@ header nav > div ul a img {
   border: 1px solid #00240f;
   border-radius: 25px;
   padding: 0.8rem;
-  font-family: "Fira Sans", sans-serif;
   font-size: 1.1rem;
   appearance: none;
   cursor: pointer;

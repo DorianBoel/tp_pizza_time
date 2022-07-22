@@ -1,0 +1,102 @@
+//Fonts
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@600&family=Fira+Sans:wght@300;400;500;600;700;800&display=swap');
+$fira: "Fira Sans", sans-serif;
+
+//Colors
+$white: #fff;
+$white-rgba: rgba(255, 255, 255, 0.9);
+$grey: #bdbdbd;
+$black: #00240f;
+$red: #ec0000;
+$dark-red: #b80909;
+$green: #05a84b;
+
+//Breakpoints
+$breakpoint-mobile: 510px;
+$breakpoint-tablet: 665px;
+
+//Spacers
+$spacer: 1rem;
+$multipliers: (
+    0: 0,
+    1: .25,
+    2: .5,
+    3: .75,
+    4: 1,
+    5: 1.5,
+    6: 2,
+    7: 2.5
+);
+
+//Titles tags
+$title-rules: (
+    2: (
+        font-size: 3.375rem,
+        font-weight: 600
+    ),
+    3: (
+        font-size: 1.8rem,
+        font-weight: 500
+    ),
+    4: (
+        font-size: 1.3rem,
+        font-weight: 500
+    )
+);
+
+@each $num, $rules in $title-rules {
+    h#{$num} {
+        @each $prop, $val in $rules {
+            #{$prop}: $val;
+        }
+    }
+}
+
+//Classes
+a.active {
+    color: $red;
+}
+
+.button {
+    display: block;
+    background-color: $red;
+    text-transform: uppercase;
+    text-align: center;
+    color: $white;
+    font-weight: 500;
+    padding: .625rem 1.5rem;
+    border-radius: 25px;
+    white-space: nowrap;
+
+    @include transition(background-color);
+
+    &:hover {
+        background-color: $dark-red;
+    }
+
+    &-lg {
+        @extend .button;
+
+        font-size: 1.3rem;
+        padding: {
+            left: .8rem;
+            right: .8rem;
+        }
+    }
+}
+
+.d-flex {
+    display: flex;
+
+    &-column {
+        @extend .d-flex;
+
+        flex-direction: column;
+    }
+}
+
+@each $num, $value in $multipliers {
+    .gap-#{$num} {
+        gap: $value * $spacer;
+    }
+}

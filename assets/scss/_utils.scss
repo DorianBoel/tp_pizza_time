@@ -1,0 +1,38 @@
+@function bannerGradient($isMobile: false) {
+    $transparency: 50%;
+    @if $isMobile {
+        $transparency: -$transparency;
+    }
+    @return linear-gradient(
+        to left,
+        transparent $transparency,
+        $white-rgba 80%
+    );
+}
+
+@mixin transition($property) {
+    transition: $property .085s ease;
+}
+
+//Flex items/content alignment
+@mixin axisAlignment($justifyContent: null, $alignItems: null) {
+    @if $justifyContent {
+        justify-content: $justifyContent;
+    }
+    @if $alignItems {
+        align-items: $alignItems;
+    }
+}
+
+//Responsive
+@mixin from($breakpoint) {
+    @media screen and (min-width: $breakpoint) {
+        @content;
+    }
+}
+
+@mixin until($breakpoint) {
+    @media screen and (max-width: Calc($breakpoint - 1px)) {
+        @content;
+    }
+}

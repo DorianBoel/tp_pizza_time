@@ -53,7 +53,7 @@ header {
                     flex-wrap: nowrap;
                 }
 
-            li a {
+                li a {
                     &:not(.button):hover {
                         @extend .active;
                     }

@@ -27,8 +27,6 @@ $fira: "Fira Sans", sans-serif;
 
 }
 
-$clamp: Clamp(-1540px, -175vw, -1000px);
-
 $white: #fff;
 $grey: #bdbdbd;
 $black: #00240f;
@@ -72,6 +70,10 @@ header {
 
         > a {
             align-self: center;
+
+            &:nth-of-type(2) {
+                color: $red;
+            }
         }
 
         > div {
@@ -96,12 +98,28 @@ header {
 
                 flex-wrap: wrap;
 
-                a img {
-                    vertical-align: bottom;
+                li {
+                    a {
+                        &:not(.button):hover {
+                            @extend .active;
+                        }
+
+                        img {
+                            vertical-align: bottom;
+                        }
+                    }
                 }
             }
         }
     }
+}
+
+a.active {
+    color: $red;
+}
+
+@mixin transition($property) {
+    transition: $property .085s ease;
 }
 
 .d-flex {
@@ -188,13 +206,14 @@ header {
     > div {
         @include axisAlignment(center);
 
+        flex-wrap: wrap;
         padding: 0 5rem;
     }
 
     article {
         @include axisAlignment(null, center);
 
-        max-width: 22%;
+        flex: 0 0 22%;
         padding: 1.5rem 1rem;
         border: 1px solid $grey;
         border-radius: 180px 180px 30px 30px;
@@ -238,6 +257,13 @@ header {
                     appearance: none;
                     cursor: pointer;
                     background: url("../img/icon-caret-down.svg") no-repeat calc(100% - 10px);
+
+                    @include transition(background-color);
+
+                    &:hover {
+                        background-color: $black;
+                        color: $white;
+                    }
                 }
 
                 a.button {
@@ -267,6 +293,8 @@ $multipliers: (
     }
 }
 
+
+
 .button {
     display: block;
     background-color: $red;
@@ -277,6 +305,12 @@ $multipliers: (
     padding: .625rem 1.5rem;
     border-radius: 25px;
     white-space: nowrap;
+
+    @include transition("background-color");
+
+    &:hover {
+        background-color: #b80909;
+    }
 
     &-lg {
         @extend .button;

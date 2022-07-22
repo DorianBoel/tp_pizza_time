@@ -23,6 +23,9 @@ header nav {
 header nav > a {
   align-self: center;
 }
+header nav > a:nth-of-type(2) {
+  color: #ec0000;
+}
 header nav > div {
   justify-content: center;
   margin-left: 3rem;
@@ -46,8 +49,12 @@ header nav > div ul {
     flex-wrap: nowrap;
   }
 }
-header nav > div ul a img {
+header nav > div ul li a img {
   vertical-align: bottom;
+}
+
+a.active, header nav > div ul li a:not(.button):not(.button-lg):hover {
+  color: #ec0000;
 }
 
 .d-flex, .d-flex-column {
@@ -124,11 +131,12 @@ header nav > div ul a img {
 }
 #menu > div {
   justify-content: center;
+  flex-wrap: wrap;
   padding: 0 5rem;
 }
 #menu article {
   align-items: center;
-  max-width: 22%;
+  flex: 0 0 22%;
   padding: 1.5rem 1rem;
   border: 1px solid #bdbdbd;
   border-radius: 180px 180px 30px 30px;
@@ -164,6 +172,11 @@ header nav > div ul a img {
   appearance: none;
   cursor: pointer;
   background: url("../img/icon-caret-down.svg") no-repeat calc(100% - 10px);
+  transition: background-color 0.085s ease;
+}
+#menu article > div:last-of-type select:hover {
+  background-color: #00240f;
+  color: #fff;
 }
 #menu article > div:last-of-type a.button, #menu article > div:last-of-type a.button-lg {
   padding: 0.8rem;
@@ -211,6 +224,10 @@ header nav > div ul a img {
   padding: 0.625rem 1.5rem;
   border-radius: 25px;
   white-space: nowrap;
+  transition: "background-color" 0.085s ease;
+}
+.button:hover, .button-lg:hover {
+  background-color: #b80909;
 }
 .button-lg {
   font-size: 1.3rem;
